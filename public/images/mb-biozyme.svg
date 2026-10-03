@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#f8fafc"/>
+  
+  <!-- Subtle Contact Shadow -->
+  <ellipse cx="200" cy="355" rx="100" ry="14" fill="#0f172a" opacity="0.08"/>
+  <ellipse cx="200" cy="355" rx="75" ry="8" fill="#0f172a" opacity="0.12"/>
+
+  <!-- Tub Body Gradient -->
+  <defs>
+    <linearGradient id="mbTubGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="25%" stop-color="#334155"/>
+      <stop offset="60%" stop-color="#1e293b"/>
+      <stop offset="90%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="lidGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="35%" stop-color="#334155"/>
+      <stop offset="70%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tub Cap / Lid -->
+  <path d="M 125 90 C 125 80 145 76 200 76 C 255 76 275 80 275 90 L 275 118 C 275 125 255 128 200 128 C 145 128 125 125 125 118 Z" fill="url(#lidGrad)"/>
+  <!-- Cap Ribs -->
+  <line x1="140" y1="88" x2="140" y2="116" stroke="#475569" stroke-width="2"/>
+  <line x1="160" y1="88" x2="160" y2="116" stroke="#475569" stroke-width="2"/>
+  <line x1="180" y1="88" x2="180" y2="116" stroke="#475569" stroke-width="2"/>
+  <line x1="200" y1="88" x2="200" y2="116" stroke="#64748b" stroke-width="2.5"/>
+  <line x1="220" y1="88" x2="220" y2="116" stroke="#475569" stroke-width="2"/>
+  <line x1="240" y1="88" x2="240" y2="116" stroke="#475569" stroke-width="2"/>
+  <line x1="260" y1="88" x2="260" y2="116" stroke="#475569" stroke-width="2"/>
+
+  <!-- Neck -->
+  <rect x="135" y="118" width="130" height="15" fill="#0f172a"/>
+
+  <!-- Main Tub Jar Body -->
+  <path d="M 135 133 C 110 140 100 160 100 185 L 100 325 C 100 345 125 352 200 352 C 275 352 300 345 300 325 L 300 185 C 300 160 290 140 265 133 Z" fill="url(#mbTubGrad)"/>
+
+  <!-- Label Wrap -->
+  <rect x="106" y="170" width="188" height="150" rx="6" fill="#090d16"/>
+  <!-- Gold Strip on Label -->
+  <rect x="106" y="170" width="188" height="6" fill="url(#goldAccent)"/>
+
+  <!-- Label Typography & Badges -->
+  <text x="200" y="196" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="13" fill="#ffffff" letter-spacing="3">MUSCLEBLAZE</text>
+  <text x="200" y="218" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="18" fill="#fbbf24">BIOZYME</text>
+  <text x="200" y="235" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="12" fill="#38bdf8" letter-spacing="1">PERFORMANCE WHEY</text>
+
+  <!-- Metric Badges Box -->
+  <rect x="122" y="250" width="156" height="42" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="145" y="268" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="14" fill="#ffffff">25g</text>
+  <text x="145" y="282" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="8" fill="#94a3b8">PROTEIN</text>
+  <line x1="172" y1="256" x2="172" y2="286" stroke="#475569" stroke-width="1"/>
+  <text x="200" y="268" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="13" fill="#fbbf24">5.5g</text>
+  <text x="200" y="282" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="8" fill="#94a3b8">BCAA</text>
+  <line x1="228" y1="256" x2="228" y2="286" stroke="#475569" stroke-width="1"/>
+  <text x="253" y="268" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="11" fill="#38bdf8">EAF®</text>
+  <text x="253" y="282" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="8" fill="#94a3b8">ABSORB</text>
+
+  <!-- Informed Choice & NABL stamp -->
+  <rect x="135" y="300" width="130" height="12" rx="3" fill="#047857"/>
+  <text x="200" y="309" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="8" fill="#ffffff">✓ NABL LAB CERTIFIED BATCH</text>
+</svg>

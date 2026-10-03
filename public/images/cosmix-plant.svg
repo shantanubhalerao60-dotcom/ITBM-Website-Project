@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#f8fafc"/>
+  <ellipse cx="200" cy="355" rx="90" ry="12" fill="#0f172a" opacity="0.1"/>
+
+  <defs>
+    <linearGradient id="kraftGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d7ba9d"/>
+      <stop offset="35%" stop-color="#eddac7"/>
+      <stop offset="70%" stop-color="#e2cbb2"/>
+      <stop offset="100%" stop-color="#caa98b"/>
+    </linearGradient>
+  </defs>
+
+  <polygon points="125,85 275,85 268,105 132,105" fill="#8c6239"/>
+  <path d="M 132 105 L 118 160 L 110 320 C 110 345 135 352 200 352 C 265 352 290 345 290 320 L 282 160 L 268 105 Z" fill="url(#kraftGrad)" stroke="#b08968" stroke-width="1.5"/>
+
+  <!-- Minimalist Clean Botanical Label -->
+  <rect x="125" y="145" width="150" height="165" rx="8" fill="#ffffff" stroke="#e6ccb2" stroke-width="1.5"/>
+  <text x="200" y="172" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="17" fill="#43281c" letter-spacing="2">COSMIX</text>
+  <line x1="150" y1="180" x2="250" y2="180" stroke="#7f4f24" stroke-width="1"/>
+  
+  <text x="200" y="198" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="12" fill="#7f4f24">NO-NONSENSE</text>
+  <text x="200" y="214" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="15" fill="#43281c">PLANT PROTEIN</text>
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui" font-weight="600" font-size="9" fill="#936639">FERMENTED GOLDEN PEA</text>
+
+  <rect x="140" y="245" width="120" height="32" rx="6" fill="#fdf0d5"/>
+  <text x="200" y="262" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="14" fill="#7f4f24">24g PROTEIN</text>
+  <text x="200" y="272" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="8" fill="#936639">DIGEZYME • GUT ENZYMES</text>
+
+  <text x="200" y="296" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="8" fill="#047857">100% VEGAN • ZERO GUMS</text>
+</svg>
