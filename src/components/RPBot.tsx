@@ -14,12 +14,14 @@ import {
   ChevronRight,
   Star,
   Check,
+  Lock,
 } from 'lucide-react';
 
 interface RPBotProps {
   products: Product[];
   onSelectProduct: (product: Product) => void;
   onVerifyBatch: (product: Product) => void;
+  onNavigateToAdmin?: () => void;
 }
 
 interface Message {
@@ -28,7 +30,7 @@ interface Message {
   text: string;
   timestamp: string;
   recommendedProducts?: Product[];
-  actionType?: 'protein_calc' | 'batch_lookup' | 'recommendation' | 'general';
+  actionType?: 'protein_calc' | 'batch_lookup' | 'recommendation' | 'general' | 'admin_portal';
   batchDetails?: {
     batchNumber: string;
     productName: string;
@@ -54,6 +56,7 @@ export const RPBot: React.FC<RPBotProps> = ({
   products,
   onSelectProduct,
   onVerifyBatch,
+  onNavigateToAdmin,
 }) => {
   const { addToCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
@@ -322,7 +325,21 @@ export const RPBot: React.FC<RPBotProps> = ({
       }
     }
 
-    // 9. Shipping & FAQs
+    // 9. Operations & Admin Portal Intent
+    if (q.includes('admin') || q.includes('staff') || q.includes('portal') || q.includes('operations') || q.includes('dashboard')) {
+      return {
+        id: `bot-${Date.now()}`,
+        sender: 'bot',
+        text: `🔐 **Operations & Staff Admin Portal:**\n\n` +
+          `• **URL Route:** \`/admin\` (or click the button below)\n` +
+          `• **Demo Credentials:** \`admin@hyuga-demo.com\` / \`admin2026\` (Use the 1-Click "Demo Fill" button)\n\n` +
+          `The staff dashboard provides supply chain analytics, live batch CoA management, and revenue monitoring.`,
+        timestamp: timeNow,
+        actionType: 'admin_portal',
+      };
+    }
+
+    // 10. Shipping & FAQs
     if (q.includes('delivery') || q.includes('shipping') || q.includes('order') || q.includes('return') || q.includes('refund')) {
       return {
         id: `bot-${Date.now()}`,
@@ -538,6 +555,33 @@ export const RPBot: React.FC<RPBotProps> = ({
                         className="w-full mt-1 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-bold text-[11px] flex items-center justify-center gap-1 shadow-xs transition-colors cursor-pointer"
                       >
                         <span>Open Full Lab Certificate</span>
+                        <ChevronRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Admin Portal Action if requested */}
+                  {msg.actionType === 'admin_portal' && onNavigateToAdmin && (
+                    <div className="mt-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white space-y-2">
+                      <div className="flex items-center justify-between text-[11px]">
+                        <span className="font-bold flex items-center gap-1.5 text-emerald-400">
+                          <Lock className="w-3.5 h-3.5" />
+                          <span>Staff Operations Portal</span>
+                        </span>
+                        <span className="font-mono text-[10px] bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded border border-slate-700">
+                          Route: /admin
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsOpen(false);
+                          onNavigateToAdmin();
+                        }}
+                        className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 shadow-md transition-all cursor-pointer active:scale-95"
+                      >
+                        <Lock className="w-3.5 h-3.5" />
+                        <span>Open Admin Portal Gate</span>
                         <ChevronRight className="w-3 h-3" />
                       </button>
                     </div>

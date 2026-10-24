@@ -31,27 +31,41 @@ function SupplementAppRoot() {
   // Catalog products state
   const [products, setProducts] = useState<Product[]>(mockProducts);
   
-  // Isolated Route Management: '/' vs '/admin'
+  // Isolated Route Management: '/' vs '/admin' (supports pathname, hash, and query)
+  const checkIsAdminRoute = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    const pathname = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    const search = window.location.search.toLowerCase();
+    return (
+      pathname.startsWith('/admin') ||
+      pathname === '/admin' ||
+      hash.startsWith('#/admin') ||
+      hash === '#admin' ||
+      search.includes('admin')
+    );
+  };
+
   const [currentRoute, setCurrentRoute] = useState<'/' | '/admin'>(() => {
-    if (typeof window !== 'undefined') {
-      return window.location.pathname.startsWith('/admin') ? '/admin' : '/';
-    }
-    return '/';
+    return checkIsAdminRoute() ? '/admin' : '/';
   });
 
   // Admin authentication session (persisted in localStorage)
   const [adminSession, setAdminSession] = useState<AdminSession | null>(() => getStoredAdminSession());
   const isAdminAuthenticated = Boolean(adminSession);
 
-  // Sync route with browser navigation (back/forward buttons)
+  // Sync route with browser navigation (back/forward buttons, hash changes)
   useEffect(() => {
-    const handlePopState = () => {
-      const isPathAdmin = window.location.pathname.startsWith('/admin');
-      setCurrentRoute(isPathAdmin ? '/admin' : '/');
+    const handleRouteSync = () => {
+      setCurrentRoute(checkIsAdminRoute() ? '/admin' : '/');
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handleRouteSync);
+    window.addEventListener('hashchange', handleRouteSync);
+    return () => {
+      window.removeEventListener('popstate', handleRouteSync);
+      window.removeEventListener('hashchange', handleRouteSync);
+    };
   }, []);
 
   // Safe navigation helper
@@ -486,6 +500,7 @@ function SupplementAppRoot() {
             setIsDetailModalOpen(true);
           }}
           onVerifyBatch={(product) => handleOpenBatchVerification(product)}
+          onNavigateToAdmin={() => navigateToRoute('/admin')}
         />
       )}
 
