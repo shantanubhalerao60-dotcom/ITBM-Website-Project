@@ -16,6 +16,7 @@ import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { CartToastContainer } from './components/CartToastContainer';
 import { Footer } from './components/Footer';
+import { RPBot } from './components/RPBot';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { 
@@ -475,6 +476,18 @@ function SupplementAppRoot() {
         isOpen={isExplainerOpen}
         onClose={() => setIsExplainerOpen(false)}
       />
+
+      {/* Native AI RP Bot Assistant */}
+      {currentRoute === '/' && (
+        <RPBot
+          products={products}
+          onSelectProduct={(product) => {
+            setSelectedDetailProduct(product);
+            setIsDetailModalOpen(true);
+          }}
+          onVerifyBatch={(product) => handleOpenBatchVerification(product)}
+        />
+      )}
 
       {/* Trust & Compliance Footer with Muted Staff Portal Link */}
       <Footer onNavigateToAdmin={() => navigateToRoute('/admin')} />
